@@ -1,9 +1,14 @@
 import React from 'react';
 
-function ExpenseDashboardPage() {
+import ExpenseList from '../components/ExpenseList';
+
+
+function ExpenseDashboardPage(props) {
   return <div>THis is the expensedashboard page
-    <p>THis is from the dashboard one</p>
+      <ExpenseList />
   </div>;
 }
+
+
 
 export default ExpenseDashboardPage;
