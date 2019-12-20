@@ -101,3 +101,130 @@ ReactDOM.render(<AdminInfo isAdmin={true} />, document.getElementById('root'));
 serviceWorker.unregister();
 
 ```
+
+
+
+
+
+### Next one after commit to
+
+
+1. 
+
+
+```js
+
+
+import React from 'react';
+import { connect } from 'react-redux';
+
+
+const ExpenseList = (props) => (
+    <div>
+        <h1>ExpenseList</h1>
+        <h4>{props.expenses.length}</h4>
+
+    </div>
+
+);
+
+
+const ConnectedExpenseList = connect((state) => {
+    return {
+        expenses: state.expenses
+    }
+})(ExpenseList);
+
+
+
+export default ConnectedExpenseList;
+```
+
+
+
+
+2. The better approach
+
+```js
+
+
+import React from 'react';
+import { connect } from 'react-redux';
+
+
+const ExpenseList = (props) => (
+    <div>
+        <h1>ExpenseList</h1>
+        <h4>{props.expenses.length}</h4>
+
+    </div>
+
+);
+
+
+const mapStateToProps = (state) => {
+    return {
+        expenses: state.expenses
+    };
+};
+
+export default connect(mapStateToProps)(ExpenseList);
+
+
+```
+
+
+3. To  access filter too.
+
+
+
+```js
+
+
+
+import React from 'react';
+import { connect } from 'react-redux';
+
+
+const ExpenseList = (props) => (
+    <div>
+        <h1>ExpenseList</h1>
+        <h4>{props.expenses.length}</h4>
+        {props.filters.text}
+
+    </div>
+
+);
+
+
+const mapStateToProps = (state) => {
+    return {
+        expenses: state.expenses,
+        filters: state.filters
+    };
+};
+
+export default connect(mapStateToProps)(ExpenseList);
+
+```
+
+
+
+4. As store changes mapStateToProps changes .
+
+To setup setTimeOut call we can watch data change
+add in index.js
+
+
+```js
+
+setTimeout(() => {
+    store.dispatch(setTextFilter('rent'));
+}, 3000)
+```
+
+
+
+
+
+5. 

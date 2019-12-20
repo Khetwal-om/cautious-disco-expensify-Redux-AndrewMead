@@ -7,7 +7,7 @@ export const addExpense = (
     {
         description = '',
         note = '',
-        amout = 0,
+        amount = 0,
         createdAt = 0
     } = {}
 ) => ({
@@ -16,7 +16,7 @@ export const addExpense = (
         id: uuid(),
         description,
         note,
-        amout,
+        amount,
         createdAt
     }
 });
